@@ -1,0 +1,40 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  background: #1c1e27;
+  display:flex;
+}
+
+img {
+  display: block;
+  cursor: pointer;
+}
+
+.container {
+  margin: auto;
+  width: 100%;
+  max-width: 840px;
+}
+
+.container .selected {
+  width: 85%;
+  height: 400px;
+  margin: 0 auto;
+  border: 4px solid purple;
+  object-fit:cover;
+}
+
+.container .imgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 40px 0 0 0;
+}
+
+.container .imgContainer img {
+  width: 150px;
+  height: 150px;
+  margin: 5px 0;
+  object-fit: cover;
+}

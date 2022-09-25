@@ -13,6 +13,7 @@ const App = () => {
 
   const handleRotationRight = () => {
     const totalLength = data.data.length;
+    // 4枚目以上になったら
     if (currentIndex + 1 > totalLength) {
       setCurrentIndex(0);
       const newUrl = data.data[0].link;
