@@ -4,10 +4,11 @@ import "./Write.css";
 const Write = () => {
   return (
     <div className="write">
+      <img className="writeImg" src="" alt="" />
       <form className="writeForm">
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
-            <i className="fas fa-plus"></i>
+            <i className="writeIcon fas fa-plus"></i>
           </label>
           <input type="file" id="fileInput" style={{ display: "none" }} />
           <input
@@ -20,7 +21,7 @@ const Write = () => {
 
         <div className="writeFormGroup">
           <textarea
-            placeholder="Tell your Story..."
+            placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
           ></textarea>
