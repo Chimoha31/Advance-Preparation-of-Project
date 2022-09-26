@@ -1,14 +1,19 @@
-import React from 'react';
-import Header from '../../header/Header';
-import './Home.css';
+import React from "react";
+import Header from "../../header/Header";
+import Posts from "../../posts/Posts";
+import SideBar from "../../sidebar/SideBar";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="home">
+    <>
       <Header />
-      homepage
-    </div>
-  )
-}
+      <div className="home">
+        <Posts />
+        <SideBar />
+      </div>
+    </>
+  );
+};
 
-export default Home
+export default Home;
