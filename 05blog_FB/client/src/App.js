@@ -16,7 +16,6 @@ const App = () => {
       <TopBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        
         <Route path="/resister" element={user ? <Home /> : <Resister />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/write" element={user ? <Write /> : <Resister />} />
