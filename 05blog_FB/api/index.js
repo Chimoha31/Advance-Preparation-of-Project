@@ -4,6 +4,7 @@ const PORT = 5000;
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
+const postRoute = require("./routes/posts");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -24,6 +25,7 @@ mongoose.connect(mongoURL, (err) => {
 // Router
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
 
 app.listen(PORT, () => {
   console.log("Server is running 👯‍♀️");
