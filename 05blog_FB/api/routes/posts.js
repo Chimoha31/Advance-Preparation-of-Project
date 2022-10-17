@@ -16,11 +16,11 @@ router.post("/", async (req, res) => {
 // Update Post
 router.put("/:id", async (req, res) => {
   try {
-    const post = await Post.findById(res.params.id);
+    const post = await Post.findById(req.params.id);
     if (post.username === req.body.username) {
       try {
         const updatedPost = await Post.findByIdAndUpdate(
-          res.params.id,
+          req.params.id,
           {
             $set: req.body,
           },
