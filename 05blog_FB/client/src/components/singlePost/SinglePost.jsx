@@ -1,25 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./SinglePost.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const SinglePost = () => {
   const params = useParams();
-  console.log(params)
+  const [singlePost, setSinglePost] = useState({});
 
   const getPost = async () => {
     await axios
       .get(`http://localhost:5000/api/posts/${params.postId}`)
       .then((res) => {
-        console.log(res);
+        setSinglePost(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  console.log(singlePost);
+
   useEffect(() => {
     getPost();
+    // eslint-disable-next-line
   }, [params]);
 
   return (
@@ -31,7 +34,7 @@ const SinglePost = () => {
           alt=""
         />
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor sit amet elit.
+          {singlePost.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fas fa-edit"></i>
             <i className="singlePostIcon fas fa-trash-alt"></i>
@@ -41,34 +44,11 @@ const SinglePost = () => {
           <span className="singlePostAuthor">
             Author: <b>Chiho</b>
           </span>
-          <span className="singlePostDate">1hour ago</span>
+          <span className="singlePostDate">
+            {new Date(singlePost.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singlePostDesc">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque. Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Officiis, ut earum. Dicta excepturi libero natus, labore eius
-          fugiat vitae officiis inventore tenetur, eaque asperiores obcaecati
-          doloremque eveniet quasi minus. Itaque. Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Officiis, ut earum. Dicta excepturi
-          libero natus, labore eius fugiat vitae officiis inventore tenetur,
-          eaque asperiores obcaecati doloremque eveniet quasi minus. Itaque.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque. Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Officiis, ut earum. Dicta excepturi libero natus, labore eius
-          fugiat vitae officiis inventore tenetur, eaque asperiores obcaecati
-          doloremque eveniet quasi minus. Itaque. Lorem ipsum, dolor sit amet
-          consectetur adipisicing elit. Officiis, ut earum. Dicta excepturi
-          libero natus, labore eius fugiat vitae officiis inventore tenetur,
-          eaque asperiores obcaecati doloremque eveniet quasi minus. Itaque.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
-        </p>
+        <p className="singlePostDesc">{singlePost.desc}</p>
       </div>
     </div>
   );
