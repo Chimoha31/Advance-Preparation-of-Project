@@ -1,17 +1,26 @@
 const express = require("express");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
+const cors = require("cors");
 
 const dotenv = require("dotenv");
 dotenv.config();
 
 app.use(express.json());
+
+
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,
+  optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 // Connect mongoDB
 const mongoURL = process.env.MONGO_URL;
