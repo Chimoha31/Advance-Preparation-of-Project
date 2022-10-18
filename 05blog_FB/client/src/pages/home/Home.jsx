@@ -12,7 +12,7 @@ const Home = () => {
     const fetchPosts = async () => {
       await axios.get("http://localhost:5000/api/posts")
         .then((res) => {
-          setPosts(res)
+          setPosts(res.data)
         })
         .catch((err) => {
           console.log(err);
@@ -20,14 +20,14 @@ const Home = () => {
     };
     fetchPosts();
   }, []);
-  
+
   console.log(posts);
 
   return (
     <>
       <Header />
       <div className="home">
-        <Posts />
+        <Posts posts={posts} />
         <SideBar />
       </div>
     </>

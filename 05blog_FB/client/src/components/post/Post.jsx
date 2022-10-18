@@ -1,39 +1,27 @@
 import React from "react";
 import "./Post.css";
+import {Link} from 'react-router-dom';
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
     <div className="post">
-      <img
-        className="postImg"
-        src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-        alt=""
-      />
+      {post.photo && <img className="postImg" src={post.photo} alt="" />}
+
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((cat, index) => (
+            <span className="postCat" key={index}>{cat.name}</span>
+          ))}
         </div>
-        <span className="postTitle">Lorem ipsum dolor sity</span>
+        <Link to={`/post/${post._id}`} className="link">
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.updatedAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quae
-        doloremque inventore repellat, voluptatum veritatis nemo vitae mollitia
-        excepturi commodi nobis suscipit eos reprehenderit, sapiente facilis
-        accusantium expedita ut dicta!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quae
-        doloremque inventore repellat, voluptatum veritatis nemo vitae mollitia
-        excepturi commodi nobis suscipit eos reprehenderit, sapiente facilis
-        accusantium expedita ut dicta!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quae
-        doloremque inventore repellat, voluptatum veritatis nemo vitae mollitia
-        excepturi commodi nobis suscipit eos reprehenderit, sapiente facilis
-        accusantium expedita ut dicta!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quae
-        doloremque inventore repellat, voluptatum veritatis nemo vitae mollitia.
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 };

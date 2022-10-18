@@ -1,16 +1,15 @@
-import React from 'react';
-import Post from '../post/Post';
-import './Posts.css';
+import React from "react";
+import Post from "../post/Post";
+import "./Posts.css";
 
-const Posts = () => {
+const Posts = ({ posts }) => {
   return (
     <div className="posts">
-      <Post />
-      <Post />
-      <Post />
-
+      {posts.map((post, index) => (
+        <Post post={post} key={index} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Posts
+export default Posts;

@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./SinglePost.css";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const SinglePost = () => {
+  const params = useParams();
+  console.log(params)
+
+  const getPost = async () => {
+    await axios
+      .get(`http://localhost:5000/api/posts/${params.postId}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getPost();
+  }, [params]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
@@ -27,27 +47,23 @@ const SinglePost = () => {
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
           earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
           inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
+          minus. Itaque. Lorem ipsum, dolor sit amet consectetur adipisicing
+          elit. Officiis, ut earum. Dicta excepturi libero natus, labore eius
+          fugiat vitae officiis inventore tenetur, eaque asperiores obcaecati
+          doloremque eveniet quasi minus. Itaque. Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Officiis, ut earum. Dicta excepturi
+          libero natus, labore eius fugiat vitae officiis inventore tenetur,
+          eaque asperiores obcaecati doloremque eveniet quasi minus. Itaque.
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
           earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
           inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
-          earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
-          inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
-          minus. Itaque.
+          minus. Itaque. Lorem ipsum, dolor sit amet consectetur adipisicing
+          elit. Officiis, ut earum. Dicta excepturi libero natus, labore eius
+          fugiat vitae officiis inventore tenetur, eaque asperiores obcaecati
+          doloremque eveniet quasi minus. Itaque. Lorem ipsum, dolor sit amet
+          consectetur adipisicing elit. Officiis, ut earum. Dicta excepturi
+          libero natus, labore eius fugiat vitae officiis inventore tenetur,
+          eaque asperiores obcaecati doloremque eveniet quasi minus. Itaque.
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, ut
           earum. Dicta excepturi libero natus, labore eius fugiat vitae officiis
           inventore tenetur, eaque asperiores obcaecati doloremque eveniet quasi
