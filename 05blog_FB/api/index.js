@@ -14,7 +14,7 @@ dotenv.config();
 
 app.use(express.json());
 
-
+// cors
 const corsOptions ={
   origin:'http://localhost:3000', 
   credentials:true,

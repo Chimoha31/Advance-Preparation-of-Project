@@ -8,16 +8,17 @@ import axios from "axios";
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
+  const fetchPosts = async () => {
+    await axios.get("http://localhost:5000/api/posts")
+      .then((res) => {
+        setPosts(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  
   useEffect(() => {
-    const fetchPosts = async () => {
-      await axios.get("http://localhost:5000/api/posts")
-        .then((res) => {
-          setPosts(res.data)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
     fetchPosts();
   }, []);
 
