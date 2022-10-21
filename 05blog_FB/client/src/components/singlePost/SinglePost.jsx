@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SinglePost.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SinglePost = () => {
   const params = useParams();
@@ -45,7 +45,10 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Chiho</b>
+            Author:
+            <Link to={`/?user=${singlePost.username}`} className="link">
+              <b>{singlePost.username}</b>
+            </Link>
           </span>
           <span className="singlePostDate">
             {new Date(singlePost.createdAt).toDateString()}
