@@ -11,6 +11,7 @@ const Resister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(false);
     try {
       const res = await axios.post("http://localhost:5000/api/auth/resister", {
         username,
@@ -19,7 +20,7 @@ const Resister = () => {
       });
       res.data && window.location.replace("/login");
     } catch (err) {
-      setError(true)
+      setError(true);
     }
   };
   return (
@@ -59,6 +60,7 @@ const Resister = () => {
           LOGIN
         </Link>
       </button>
+      {error && <span style={{color: "red"}}>Something went wrong !</span>}
     </div>
   );
 };
