@@ -60,7 +60,7 @@ const Resister = () => {
           LOGIN
         </Link>
       </button>
-      {error && <span style={{color: "red"}}>Something went wrong !</span>}
+      {error && <span style={{color: "red"}} className="mt-2">Something went wrong !</span>}
     </div>
   );
 };
