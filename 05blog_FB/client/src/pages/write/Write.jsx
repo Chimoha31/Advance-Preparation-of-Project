@@ -17,7 +17,7 @@ const Write = () => {
       desc,
     };
     if (file) {
-      const data = FormData();
+      const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
@@ -56,6 +56,7 @@ const Write = () => {
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
@@ -64,6 +65,7 @@ const Write = () => {
             placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">

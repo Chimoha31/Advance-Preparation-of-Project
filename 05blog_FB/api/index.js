@@ -8,11 +8,13 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const cors = require("cors");
+const path = require("path");
 
 const dotenv = require("dotenv");
 dotenv.config();
 
 app.use(express.json());
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 // cors
 const corsOptions ={
