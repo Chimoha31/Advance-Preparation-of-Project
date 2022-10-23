@@ -23,18 +23,14 @@ const Write = () => {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post(`http://localhost:5000//api/upload`, data);
-      } catch (e) {
-        console.log(e);
-      }
+        await axios.post("http://localhost:5000/api/upload", data);
+      } catch (err) {}
     }
     try {
-      axios.get(`http://localhost:5000//api/posts`, newPost);
-    } catch (e) {
-      console.log(e);
-    }
+      const res = await axios.post("http://localhost:5000/api/posts", newPost);
+      window.location.replace("/post/" + res.data._id);
+    } catch (err) {}
   };
-
   return (
     <div className="write">
       {file && (
@@ -56,16 +52,15 @@ const Write = () => {
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={e=>setTitle(e.target.value)}
           />
         </div>
-
         <div className="writeFormGroup">
           <textarea
             placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
-            onChange={(e) => setDesc(e.target.value)}
+            onChange={e=>setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">
