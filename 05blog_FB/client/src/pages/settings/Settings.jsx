@@ -5,7 +5,7 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 
 const Settings = () => {
-  const { user } = useContext(Context);
+  const { user, dispatch } = useContext(Context);
 
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState("");
@@ -14,8 +14,9 @@ const Settings = () => {
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
-    console.log("Hi");
     e.preventDefault();
+    dispatch({ type: "UPDATE_START" });
+
     const updatedUser = {
       userId: user._id,
       username,
@@ -36,13 +37,15 @@ const Settings = () => {
       }
     }
     try {
-      await axios.put(
+      const res = await axios.put(
         `http://localhost:5000/api/users/` + user._id,
         updatedUser
       );
       setSuccess(true);
+      dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (e) {
       console.log(e);
+      dispatch({ type: "UPDATE_FAILURE" });
     }
   };
 

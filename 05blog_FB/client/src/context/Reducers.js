@@ -18,6 +18,8 @@ const Reducer = (state, action) => {
         isFetching: false,
         error: true,
       };
+
+    // Update
       case "UPDATE_START":
         return {
           ...state,
